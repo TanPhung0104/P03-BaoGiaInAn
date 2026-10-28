@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdio.h>
 #include "common.h"
 
 char maDon[MAX][10];
