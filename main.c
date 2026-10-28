@@ -1,5 +1,12 @@
 #include <stdio.h>
+#include <stdio.h>
+#include "common.h"
 
+char maDon[MAX][10];
+char tenDon[MAX][51];
+int soTrang[MAX];
+int soBan[MAX];
+int loaiIn[MAX];
 int n = 0;
 
 int main() {
