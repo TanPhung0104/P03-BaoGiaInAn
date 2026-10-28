@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include "common.h"
 
@@ -8,8 +9,17 @@ int soBan[MAX];
 int loaiIn[MAX];
 int n = 0;
 
-int main() {
+// Xoa phan con lai trong bo dem ban phim
+void xoaBoDemMain(void) {
+    int c;
+
+    while ((c = getchar()) != '\n' && c != EOF) {
+    }
+}
+
+int main(void) {
     int chon;
+    int ketQua;
 
     do {
         printf("\n===== BAO GIA IN AN CHO CLB =====\n");
@@ -23,36 +33,86 @@ int main() {
         printf("8. Thong ke don in\n");
         printf("0. Thoat\n");
         printf("Nhap lua chon: ");
-        scanf("%d", &chon);
+
+        ketQua = scanf("%d", &chon);
+
+        if (ketQua == EOF) {
+            printf("\nKet thuc chuong trinh!\n");
+            break;
+        }
+
+        xoaBoDemMain();
+
+        if (ketQua != 1) {
+            printf("Lua chon phai la so nguyen!\n");
+            continue;
+        }
 
         switch (chon) {
             case 1:
-                printf("Chuc nang them don in\n");
+                themDon(&n);
                 break;
+
             case 2:
-                printf("Chuc nang sua don in\n");
+                suaDon(n);
                 break;
+
             case 3:
-                printf("Chuc nang tinh bao gia\n");
+                lietKeDon();
                 break;
+
             case 4:
-                printf("Chuc nang so sanh ngan sach\n");
+                soSanhNganSach();
                 break;
-            case 5:
-                printf("Chuc nang tim kiem don in\n");
+
+            case 5: {
+                char ma[10];
+
+                printf("Nhap ma don can tim: ");
+                if (scanf("%9s", ma) != 1) {
+                    printf("Khong doc duoc ma don!\n");
+                    break;
+                }
+
+                xoaBoDemMain();
+
+                int viTri = timViTri(ma);
+
+                if (viTri == -1) {
+                    printf("Khong tim thay don in!\n");
+                } else {
+                    printf("\n===== THONG TIN DON IN =====\n");
+                    printf("Ma don: %s\n", maDon[viTri]);
+                    printf("Ten don: %s\n", tenDon[viTri]);
+                    printf("So trang: %d\n", soTrang[viTri]);
+                    printf("So ban: %d\n", soBan[viTri]);
+                    printf("Loai in: %s\n",
+                           loaiIn[viTri] == 0 ? "Den trang" : "In mau");
+                    printf("So to: %lld\n", tinhSoTo(viTri));
+                    printf("Gia cuoi: %.2f nghin dong\n",
+                           tinhGiaCuoi(viTri));
+                }
                 break;
+            }
+
             case 6:
-                printf("Chuc nang xoa don in\n");
+                xoaDon(&n);
                 break;
+
             case 7:
-                printf("Chuc nang sap xep don in\n");
+                sapXepDon();
+                printf("Da sap xep danh sach theo gia cuoi.\n");
+                lietKeDon();
                 break;
+
             case 8:
-                printf("Chuc nang thong ke don in\n");
+                thongKe();
                 break;
+
             case 0:
                 printf("Ket thuc chuong trinh!\n");
                 break;
+
             default:
                 printf("Lua chon khong hop le!\n");
         }
