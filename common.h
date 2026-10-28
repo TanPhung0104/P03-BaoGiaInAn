@@ -1,3 +1,4 @@
+
 #ifndef COMMON_H
 #define COMMON_H
 
@@ -10,16 +11,20 @@ extern int soBan[MAX];
 extern int loaiIn[MAX];
 extern int n;
 
+/* Quan ly don in */
 void themDon(int *n);
 void suaDon(int n);
 
+/* Tinh bao gia */
 long long tinhSoTo(int i);
 double tinhGiaTheoLoai(long long soTo, int loai);
 double tinhGiaGoc(int i);
 double tinhGiaCuoi(int i);
 
+/* So sanh ngan sach */
 void soSanhNganSach(void);
 
+/* Tim kiem, xoa, sap xep va thong ke */
 int timViTri(char ma[]);
 void lietKeDon(void);
 void xoaDon(int *n);
